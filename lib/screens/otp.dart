@@ -26,9 +26,7 @@ import 'package:cabhiring/utils/colors.dart' as colors;
          children: [
            Padding(padding: EdgeInsets.fromLTRB(10, 40, 10, 40),
              child: Text("OTP VERIFICATION", style: GoogleFonts.poppins(
-                 fontSize: 36,
-                 fontWeight: FontWeight.bold
-                 ,
+    fontSize: 24,
                  color: colors.primarytextcolor
              ),),
            ),
@@ -42,7 +40,7 @@ import 'package:cabhiring/utils/colors.dart' as colors;
                      fillColor: colors.textboxcolor,
                      hintText: "OTP",
                      hintStyle: GoogleFonts.poppins(
-                         color: Colors.white.withOpacity(0.5),
+                         color:  colors.hintcolor,
                          fontSize: 18
                      ),
                      focusedBorder: OutlineInputBorder(
@@ -69,14 +67,14 @@ import 'package:cabhiring/utils/colors.dart' as colors;
                width: 314,
                child: ElevatedButton.icon(
                  icon: Icon(
-                   Icons.login,
+                   Icons.domain_verification_sharp,
                    size: 24,
-                   color: colors.primarytextcolor,
+                     color: colors.buttontextcolor
                  ),
                  label: Text(
                    "VERIFY",
                    style: GoogleFonts.montserrat(
-                       color: colors.primarytextcolor, fontSize: 18),
+                       color: colors.buttontextcolor, fontSize: 18),
                  ),
                  onPressed: () {
 

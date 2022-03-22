@@ -1,4 +1,5 @@
 import 'package:cabhiring/screens/login.dart';
+import 'package:cabhiring/screens/onboarding.dart';
 import 'package:cabhiring/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,7 @@ body: Column(
   crossAxisAlignment: CrossAxisAlignment.center,
   
   children: [
-  Expanded(child:   Image.asset('assets/homeimage.png'),
+  Expanded(child:   Image.asset('assets/homeimage1.png'),
   flex: 1,
   ),
     Expanded(child: Column(
@@ -57,18 +58,18 @@ body: Column(
               icon: Icon(
                 Icons.app_registration,
                 size: 24,
-                color: colors.primarytextcolor,
+                color: colors.buttontextcolor,
               ),
               label: Text(
-                "SIGN UP",
+                "Get Started",
                 style: GoogleFonts.montserrat(
-                    color: colors.primarytextcolor, fontSize: 18),
+                    color: colors.buttontextcolor, fontSize: 18),
               ),
               onPressed: () {
 
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUp()),
+                  MaterialPageRoute(builder: (context) => OnBoarding()),
                 );
 
               },
@@ -91,12 +92,12 @@ body: Column(
               icon: Icon(
                 Icons.login,
                 size: 24,
-                color: colors.primarytextcolor,
+                color: colors.buttontextcolor,
               ),
               label: Text(
                 "LOGIN",
                 style: GoogleFonts.montserrat(
-                    color: colors.primarytextcolor, fontSize: 18),
+                    color: colors.buttontextcolor, fontSize: 18),
               ),
               onPressed: () {
 

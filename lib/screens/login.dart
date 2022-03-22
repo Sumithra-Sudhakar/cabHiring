@@ -30,8 +30,7 @@ class _LoginState extends State<Login> {
             child: Padding(padding: EdgeInsets.fromLTRB(30, 40, 10, 10),
               child: Text("LOG IN", style: GoogleFonts.poppins(
                   fontSize: 36,
-                  fontWeight: FontWeight.bold
-                  ,
+
                   color: colors.primarytextcolor
               ),),
             ),
@@ -39,44 +38,52 @@ class _LoginState extends State<Login> {
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-                style: GoogleFonts.montserrat(color: Colors.white),
-                decoration: InputDecoration(
+            child: SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width*0.8,
+              child: TextFormField(
+                  style: GoogleFonts.montserrat(color: Colors.white),
+                  decoration: InputDecoration(
 
-                    filled: true,
-                    fillColor: colors.textboxcolor,
-                    hintText: "Phone number",
-                    hintStyle: GoogleFonts.poppins(
-                        color: Colors.white.withOpacity(0.5),
-                        fontSize: 18
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(5.0),
+                      filled: true,
+                      fillColor: colors.textboxcolor,
+                      hintText: "Phone number",
+                      hintStyle: GoogleFonts.poppins(
+                          color: colors.hintcolor,
+                          fontSize: 18
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(5.0),
 
-                    )
-                )),
+                      )
+                  )),
+            ),
           ),
 
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-                style: GoogleFonts.montserrat(color: Colors.white),
-                decoration: InputDecoration(
+            child: SizedBox(
+              height: 50,
+              width: MediaQuery.of(context).size.width*0.8,
+              child: TextFormField(
+                  style: GoogleFonts.montserrat(color: Colors.white),
+                  decoration: InputDecoration(
 
-                    filled: true,
-                    fillColor: colors.textboxcolor,
-                    hintText: "Password",
-                    hintStyle: GoogleFonts.poppins(
-                        color: Colors.white.withOpacity(0.5),
-                        fontSize: 18
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide.none,
-                      borderRadius: BorderRadius.circular(5.0),
+                      filled: true,
+                      fillColor: colors.textboxcolor,
+                      hintText: "Password",
+                      hintStyle: GoogleFonts.poppins(
+                          color: colors.hintcolor,
+                          fontSize: 18
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(5.0),
 
-                    )
-                )),
+                      )
+                  )),
+            ),
           ),
           Spacer(),
           Padding(
@@ -88,12 +95,12 @@ class _LoginState extends State<Login> {
                 icon: Icon(
                   Icons.login,
                   size: 24,
-                  color: colors.primarytextcolor,
+                  color: colors.buttontextcolor,
                 ),
                 label: Text(
                   "LOGIN",
                   style: GoogleFonts.montserrat(
-                      color: colors.primarytextcolor, fontSize: 18),
+                      color: colors.buttontextcolor, fontSize: 18),
                 ),
                 onPressed: () {
 
