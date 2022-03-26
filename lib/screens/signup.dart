@@ -1,3 +1,4 @@
+import 'package:cabhiring/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
@@ -171,6 +172,20 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
           ),
+          Spacer(),
+          TextButton(
+            child: Text("Already have an account? Log In"),
+            onPressed: (){
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Login()),
+              );
+
+            },
+
+          ),
+          Spacer()
         ],
       ),
     );

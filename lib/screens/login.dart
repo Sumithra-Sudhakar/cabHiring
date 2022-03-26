@@ -1,3 +1,5 @@
+import 'package:cabhiring/screens/choose_loc.dart';
+import 'package:cabhiring/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
@@ -105,6 +107,11 @@ class _LoginState extends State<Login> {
                 onPressed: () {
 
 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChooseLoc()),
+                  );
+
 
                 },
                 style: ElevatedButton.styleFrom(
@@ -117,6 +124,20 @@ class _LoginState extends State<Login> {
               ),
             ),
           ),
+          Spacer(),
+          TextButton(
+            child: Text("New here? Sign Up"),
+            onPressed: (){
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignUp()),
+              );
+
+            },
+
+          ),
+          Spacer()
         ],
       ),
     );
