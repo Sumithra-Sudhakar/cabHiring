@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cabhiring/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -90,47 +91,83 @@ class _CabDetailsState extends State<CabDetails> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
 
-                          Image.asset('assets/homeimage.png', height: 100,width: 100,)
-                        ],
+                            Image.asset('assets/homeimage.png', height: 100,width: 100,)
+                          ],
+                        ),
                       ),
                     ),
-                    Spacer(),
-                    Column(
-                      children: [
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(children: [
-                        //     Text("Driver Name", style: GoogleFonts.poppins(
-                        //       fontWeight: FontWeight.w500,
-                        //       fontSize: 14
-                        //     ),),
-                        //     Spacer(),
-                        //     Text("Ravindran", style: GoogleFonts.poppins(
-                        //
-                        //         fontSize: 14
-                        //     ),),
-                        //   ],),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(children: [
-                        //     Text("Driver Nam", style: GoogleFonts.poppins(
-                        //         fontWeight: FontWeight.w500,
-                        //         fontSize: 14
-                        //     ),),
-                        //     Spacer(),
-                        //     Text("Ravindran", style: GoogleFonts.poppins(
-                        //
-                        //         fontSize: 14
-                        //     ),),
-                        //   ],),
-                        // )
-                      ],
+                    Expanded(
+                      flex: 4,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(children: [
+                              AutoSizeText("Driver Name", style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+
+                              ),
+                              maxLines: 1,),
+                              Spacer(),
+                              AutoSizeText("Ravindran", style: GoogleFonts.poppins(
+
+
+                              ),
+                              maxLines: 1,
+                              ),
+                            ],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(children: [
+                              AutoSizeText("Phone Number",maxLines: 1, style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w500,
+
+                              ),),
+                              Spacer(),
+                              AutoSizeText("1234567880", maxLines:1,style: GoogleFonts.poppins(
+
+
+                              ),),
+                            ],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(children: [
+                              AutoSizeText("Cab Number",maxLines: 1, style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+
+                              ),),
+                              Spacer(),
+                              AutoSizeText("TN25A5123", maxLines:1,style: GoogleFonts.poppins(
+
+
+                              ),),
+                            ],),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(children: [
+                              AutoSizeText("OTP",maxLines: 1, style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w500,
+
+                              ),),
+                              Spacer(),
+                              AutoSizeText("12345", maxLines:1,style: GoogleFonts.poppins(
+
+
+                              ),),
+                            ],),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -157,10 +194,6 @@ icon: Icon(Icons.phone, size: 16,),
                   onPressed: () {
 
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CabDetails()),
-                    );
 
 
                   },
@@ -189,10 +222,7 @@ icon: Icon(Icons.cancel_presentation, size: 15,),
                       onPressed: () {
 
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CabDetails()),
-                        );
+
 
 
                       },

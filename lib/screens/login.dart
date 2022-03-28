@@ -23,123 +23,131 @@ class _LoginState extends State<Login> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
 
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Padding(padding: EdgeInsets.fromLTRB(30, 40, 10, 10),
-              child: Text("LOG IN", style: GoogleFonts.poppins(
-                  fontSize: 36,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(padding: EdgeInsets.fromLTRB(30, 40, 10, 10),
+                    child: Text("LOG IN", style: GoogleFonts.poppins(
+                        fontSize: 36,
 
-                  color: colors.primarytextcolor
-              ),),
-            ),
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              height: 50,
-              width: MediaQuery.of(context).size.width*0.8,
-              child: TextFormField(
-                  style: GoogleFonts.montserrat(color: Colors.white),
-                  decoration: InputDecoration(
-
-                      filled: true,
-                      fillColor: colors.textboxcolor,
-                      hintText: "Phone number",
-                      hintStyle: GoogleFonts.poppins(
-                          color: colors.hintcolor,
-                          fontSize: 18
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(5.0),
-
-                      )
-                  )),
-            ),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SizedBox(
-              height: 50,
-              width: MediaQuery.of(context).size.width*0.8,
-              child: TextFormField(
-                  style: GoogleFonts.montserrat(color: Colors.white),
-                  decoration: InputDecoration(
-
-                      filled: true,
-                      fillColor: colors.textboxcolor,
-                      hintText: "Password",
-                      hintStyle: GoogleFonts.poppins(
-                          color: colors.hintcolor,
-                          fontSize: 18
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(5.0),
-
-                      )
-                  )),
-            ),
-          ),
-          Spacer(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(30, 30, 30, 50),
-            child: SizedBox(
-              height: 54,
-              width: 314,
-              child: ElevatedButton.icon(
-                icon: Icon(
-                  Icons.login,
-                  size: 24,
-                  color: colors.buttontextcolor,
+                        color: colors.primarytextcolor
+                    ),),
+                  ),
                 ),
-                label: Text(
-                  "LOGIN",
-                  style: GoogleFonts.montserrat(
-                      color: colors.buttontextcolor, fontSize: 18),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width*0.8,
+                    child: TextFormField(
+                        style: GoogleFonts.montserrat(color: Colors.white),
+                        decoration: InputDecoration(
+
+                            filled: true,
+                            fillColor: colors.textboxcolor,
+                            hintText: "Phone number",
+                            hintStyle: GoogleFonts.poppins(
+                                color: colors.hintcolor,
+                                fontSize: 18
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5.0),
+
+                            )
+                        )),
+                  ),
                 ),
-                onPressed: () {
+
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width*0.8,
+                    child: TextFormField(
+                        obscureText: true,
+                        style: GoogleFonts.montserrat(color: Colors.white),
+                        decoration: InputDecoration(
+
+                            filled: true,
+                            fillColor: colors.textboxcolor,
+                            hintText: "Password",
+                            hintStyle: GoogleFonts.poppins(
+                                color: colors.hintcolor,
+                                fontSize: 18
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5.0),
+
+                            )
+                        )),
+                  ),
+                ),
+                Spacer(),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(30, 30, 30, 50),
+                  child: SizedBox(
+                    height: 54,
+                    width: 314,
+                    child: ElevatedButton.icon(
+                      icon: Icon(
+                        Icons.login,
+                        size: 24,
+                        color: colors.buttontextcolor,
+                      ),
+                      label: Text(
+                        "LOGIN",
+                        style: GoogleFonts.montserrat(
+                            color: colors.buttontextcolor, fontSize: 18),
+                      ),
+                      onPressed: () {
 
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ChooseLoc()),
-                  );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ChooseLoc()),
+                        );
 
 
-                },
-                style: ElevatedButton.styleFrom(
-                    elevation: 10,
+                      },
+                      style: ElevatedButton.styleFrom(
+                          elevation: 10,
 
-                    padding: EdgeInsets.all(10.0),
-                    primary: colors.buttoncolor,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0))),
-              ),
+                          padding: EdgeInsets.all(10.0),
+                          primary: colors.buttoncolor,
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0))),
+                    ),
+                  ),
+                ),
+                Spacer(),
+                TextButton(
+                  child: Text("New here? Sign Up"),
+                  onPressed: (){
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUp()),
+                    );
+
+                  },
+
+                ),
+                Spacer()
+              ],
             ),
-          ),
-          Spacer(),
-          TextButton(
-            child: Text("New here? Sign Up"),
-            onPressed: (){
-
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignUp()),
-              );
-
-            },
-
-          ),
-          Spacer()
+          )
         ],
-      ),
+      )
     );
   }
 }
