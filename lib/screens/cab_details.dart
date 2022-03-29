@@ -1,5 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cabhiring/screens/choose_loc.dart';
 import 'package:cabhiring/screens/signup.dart';
+import 'package:cabhiring/screens/trip.dart';
+import 'package:cabhiring/utils/alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -193,8 +196,11 @@ icon: Icon(Icons.phone, size: 16,),
                   ),
                   onPressed: () {
 
-
-
+displayDialog(context, "OK", null, (){Navigator.push(
+  context,
+  MaterialPageRoute(builder: (context) => Trip()),
+);
+}, "Happy Ride!", "Your trip has started");
 
                   },
                   style: ElevatedButton.styleFrom(
@@ -219,10 +225,10 @@ icon: Icon(Icons.cancel_presentation, size: 15,),
                             fontWeight: FontWeight.w600
                         ),
                       ),
-                      onPressed: () {
-
-
-
+                      onPressed: () {displayDialog(context, "Yes", "No", (){   Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ChooseLoc()),
+                      );}, "Cancel Trip", "Are you sure you want to cancel the trip?");
 
 
                       },

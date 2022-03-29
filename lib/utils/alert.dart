@@ -13,11 +13,11 @@ displayDialog(context, positiveText, negativeText, Function positiveFunction,
       backgroundColor: colors.scaffoldbackground,
       title: Text(
         title,
-        style: GoogleFonts.raleway(color: colors.alertBoxTextColor, fontWeight: FontWeight.bold),
+        style: GoogleFonts.raleway(color: colors.secondarytextcolor, fontWeight: FontWeight.bold),
       ),
       content: Text(
         subTitle,
-        style: GoogleFonts.raleway(color: colors.alertBoxTextColor),
+        style: GoogleFonts.raleway(color: colors.secondarytextcolor),
       ),
       actions: <Widget>[
         negativeText != null
