@@ -8,6 +8,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:cabhiring/global/global.dart';
 import 'customer/choose_loc.dart';
 import 'customer/signup.dart';
+import 'driver/signup_driver.dart';
 import 'otp.dart';
 
 class Login extends StatefulWidget {
@@ -161,6 +162,19 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Spacer(),
+                TextButton(
+                  child: Text("Forgot password?"),
+                  onPressed: (){
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ForgotPwd()),
+                    );
+
+                  },
+
+                ),
+                Spacer(),
                 Padding(
                   padding: EdgeInsets.fromLTRB(30, 30, 30, 50),
                   child: SizedBox(
@@ -191,6 +205,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Spacer(),
+
                 TextButton(
                   child: Text("New here? Sign Up"),
                   onPressed: (){
@@ -213,5 +228,141 @@ class _LoginState extends State<Login> {
     );
   }
 }
+
+class ForgotPwd extends StatefulWidget {
+  const ForgotPwd({Key? key}) : super(key: key);
+
+  @override
+  State<ForgotPwd> createState() => _ForgotPwdState();
+}
+
+class _ForgotPwdState extends State<ForgotPwd> {
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      backgroundColor: colors.scaffoldbackground,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: colors.scaffoldbackground,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: colors.primarytextcolor),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+
+
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(padding: EdgeInsets.fromLTRB(10, 100, 10, 10),
+                    child: Text("CHANGE PASSWORD", style: GoogleFonts.poppins(
+                        fontSize: 30,
+
+
+                        color: colors.primarytextcolor
+                    ),),
+                  ),
+                ),
+
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 10.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width*0.8,
+                    child: TextFormField(
+                        style: GoogleFonts.montserrat(color: colors.primarytextcolor),
+                        decoration: InputDecoration(
+
+                            filled: true,
+                            fillColor: colors.textboxcolor,
+                            labelText: "New Password",
+                            labelStyle: GoogleFonts.poppins(
+                                color: colors.hintcolor,
+                                fontSize: 18
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5.0),
+
+                            )
+                        )),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width*0.8,
+                    child: TextFormField(
+                        style: GoogleFonts.montserrat(color: colors.primarytextcolor),
+                        decoration: InputDecoration(
+
+                            filled: true,
+                            fillColor: colors.textboxcolor,
+                            labelText: "Confirm New Password",
+                            labelStyle: GoogleFonts.poppins(
+                                color: colors.hintcolor,
+                                fontSize: 18
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(5.0),
+
+                            )
+                        )),
+                  ),
+                ),
+                Spacer(
+                  flex: 2,
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(30, 30, 30, 20),
+                  child: ElevatedButton.icon(
+                    icon: Icon(
+                      Icons.save,
+                      size: 24,
+                      color: colors.buttontextcolor,
+                    ),
+                    label: Text(
+                      "SAVE",
+                      style: GoogleFonts.montserrat(
+                          color: colors.buttontextcolor, fontSize: 18),
+                    ),
+                    onPressed: () {
+
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                        elevation: 10,
+
+padding: EdgeInsets.all(8.0),
+                        primary: colors.buttoncolor,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(2.0))),
+                  ),
+                ),
+
+
+
+                Spacer()
+              ],
+            ),
+          )
+        ],
+
+      ),
+    );
+  }
+}
+
 
 

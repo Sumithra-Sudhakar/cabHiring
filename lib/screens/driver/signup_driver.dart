@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 
 import '../otp.dart';
+import 'driver_home.dart';
 
 class SignUpDriver extends StatefulWidget {
   const SignUpDriver({Key? key}) : super(key: key);
@@ -330,7 +331,7 @@ class _DriverMobileState extends State<DriverMobile> {
 
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => OTP()),
+                          MaterialPageRoute(builder: (context) => DriverHome()),
                         );
 
                       },
