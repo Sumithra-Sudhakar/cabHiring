@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cabhiring/screens/payment.dart';
+import 'package:cabhiring/screens/customer/payment.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 
-import '../utils/alert.dart';
+import '../../utils/alert.dart';
 
 class Trip extends StatefulWidget {
   const Trip({Key? key}) : super(key: key);

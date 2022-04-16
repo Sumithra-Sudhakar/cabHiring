@@ -1,5 +1,5 @@
-import 'package:cabhiring/screens/cab_details.dart';
-import 'package:cabhiring/screens/signup.dart';
+import 'package:cabhiring/screens/customer/cab_details.dart';
+import 'package:cabhiring/screens/customer/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';

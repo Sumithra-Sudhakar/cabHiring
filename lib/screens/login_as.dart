@@ -1,33 +1,23 @@
-import 'package:cabhiring/screens/login.dart';
-import 'package:cabhiring/screens/onboarding.dart';
+import 'package:cabhiring/screens/customer/choose_loc.dart';
 import 'package:cabhiring/screens/customer/signup.dart';
+import 'package:cabhiring/screens/driver/signup_driver.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:cabhiring/utils/file_auth.dart';
-import 'package:cabhiring/utils/validator.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 
+class SignUpAs extends StatelessWidget {
+  const SignUpAs({Key? key}) : super(key: key);
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: colors.scaffoldbackground ,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
 
         children: [
-          Expanded(child:   Image.asset('assets/homeimage1.png'),
+          Expanded(child:   Image.asset('assets/homeimage.png'),
             flex: 1,
           ),
           Expanded(child: Column(
@@ -61,20 +51,20 @@ class _HomeState extends State<Home> {
                   width: 314,
                   child: ElevatedButton.icon(
                     icon: Icon(
-                      Icons.app_registration,
+                      Icons.person_add_alt,
                       size: 24,
                       color: colors.buttontextcolor,
                     ),
                     label: Text(
-                      "Get Started",
+                      "SIGN UP AS CUSTOMER",
                       style: GoogleFonts.montserrat(
-                          color: colors.buttontextcolor, fontSize: 18),
+                          color: colors.buttontextcolor, fontSize: 14),
                     ),
                     onPressed: () {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => OnBoarding()),
+                        MaterialPageRoute(builder: (context) => SignUp()),
                       );
 
                     },
@@ -95,20 +85,20 @@ class _HomeState extends State<Home> {
                   width: 314,
                   child: ElevatedButton.icon(
                     icon: Icon(
-                      Icons.login,
+                      Icons.drive_eta_rounded,
                       size: 24,
                       color: colors.buttontextcolor,
                     ),
                     label: Text(
-                      "LOGIN",
+                      "SIGN UP AS DRIVER",
                       style: GoogleFonts.montserrat(
-                          color: colors.buttontextcolor, fontSize: 18),
+                          color: colors.buttontextcolor, fontSize: 14),
                     ),
                     onPressed: () {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Login()),
+                        MaterialPageRoute(builder: (context) => SignUpDriver()),
                       );
 
                     },

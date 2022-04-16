@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cabhiring/screens/choose_loc.dart';
-import 'package:cabhiring/screens/signup.dart';
-import 'package:cabhiring/screens/trip.dart';
+import 'package:cabhiring/screens/customer/choose_loc.dart';
+import 'package:cabhiring/screens/customer/signup.dart';
+import 'package:cabhiring/screens/customer/trip.dart';
 import 'package:cabhiring/utils/alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
