@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "993861023703",
+    "firebase_url": "https://cabhiring-eda48-default-rtdb.firebaseio.com",
+    "project_id": "cabhiring-eda48",
+    "storage_bucket": "cabhiring-eda48.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993861023703:android:8a285aea83fd23f420fd92",
+        "android_client_info": {
+          "package_name": "com.example.cabhiring"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993861023703-vmgfhgs5a7pu7619ei9qj7lr9afd9gkh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cabhiring",
+            "certificate_hash": "344d7290105314a0a070b76fec12020bcf160da1"
+          }
+        },
+        {
+          "client_id": "993861023703-cae91u0j426j184rsjenf3qb60f69386.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPyVyuRwuHGLQVJxS84D1Gm6QdZoWD5lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993861023703-cae91u0j426j184rsjenf3qb60f69386.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,15 @@
+import 'package:cabhiring/screens/cab_details.dart';
 import 'package:cabhiring/screens/choose_loc.dart';
 import 'package:cabhiring/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:cabhiring/global/global.dart';
+import 'otp.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -11,6 +18,65 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // TextEditingController nameTextEditingController = TextEditingController();
+  TextEditingController emailTextEditingController = TextEditingController();
+  // TextEditingController phoneTextEditingController = TextEditingController();
+  TextEditingController passwordTextEditingController = TextEditingController();
+
+  validateForm()
+  {
+    // if(nameTextEditingController.text.length < 5)
+    // {
+    //   Fluttertoast.showToast(msg: "Name must be atleast 5 character");
+    // }
+
+    if(!emailTextEditingController.text.contains("@"))
+    {
+      Fluttertoast.showToast(msg: "Enter Valid email");
+    }
+
+    else if(passwordTextEditingController.text.isEmpty)
+    {
+      Fluttertoast.showToast(msg: "Password is required");
+    }
+
+    else
+    {
+      loginUserInfo();
+    }
+
+  }
+
+  loginUserInfo() async{
+    final User? firebaseUser = (
+        await fireAuth.signInWithEmailAndPassword(
+          email: emailTextEditingController.text.trim(),
+          password: passwordTextEditingController.text.trim(),
+        ).catchError((msg){
+          Navigator.pop(context);
+          Fluttertoast.showToast(msg: "Error: " + msg.toString());
+        })
+    ).user;
+
+    if(firebaseUser != null)
+    {
+      // currentFirebaseUser = firebaseUser;
+      Fluttertoast.showToast(msg: "Login Success");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ChooseLoc(
+
+        )),
+      );
+
+
+    }
+    else{
+      Navigator.pop(context);
+      Fluttertoast.showToast(msg: "Login Failed");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +114,13 @@ class _LoginState extends State<Login> {
                     height: 50,
                     width: MediaQuery.of(context).size.width*0.8,
                     child: TextFormField(
-                        style: GoogleFonts.montserrat(color: Colors.white),
+                        controller: emailTextEditingController,
+                        style: GoogleFonts.montserrat(color: colors.primarytextcolor),
                         decoration: InputDecoration(
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Phone number",
+                            hintText: "Email",
                             hintStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
@@ -73,8 +140,9 @@ class _LoginState extends State<Login> {
                     height: 50,
                     width: MediaQuery.of(context).size.width*0.8,
                     child: TextFormField(
-                        obscureText: true,
-                        style: GoogleFonts.montserrat(color: Colors.white),
+                      obscureText: true,
+                        controller: passwordTextEditingController,
+                        style: GoogleFonts.montserrat(color: colors.primarytextcolor),
                         decoration: InputDecoration(
 
                             filled: true,
@@ -110,14 +178,7 @@ class _LoginState extends State<Login> {
                             color: colors.buttontextcolor, fontSize: 18),
                       ),
                       onPressed: () {
-
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ChooseLoc()),
-                        );
-
-
+                        validateForm();
                       },
                       style: ElevatedButton.styleFrom(
                           elevation: 10,
@@ -147,7 +208,10 @@ class _LoginState extends State<Login> {
             ),
           )
         ],
-      )
+
+      ),
     );
   }
 }
+
+

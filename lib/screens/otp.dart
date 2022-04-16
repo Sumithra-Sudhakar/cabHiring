@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:cabhiring/screens/choose_loc.dart';
 
-import 'choose_loc.dart';
  class OTP extends StatefulWidget {
    const OTP({Key? key}) : super(key: key);
 
@@ -11,6 +14,63 @@ import 'choose_loc.dart';
  }
 
  class _OTPState extends State<OTP> {
+   TextEditingController phoneController = TextEditingController();
+   TextEditingController otpController = TextEditingController();
+
+   FirebaseAuth auth = FirebaseAuth.instance;
+
+   void loginWithPhone() async {
+     auth.verifyPhoneNumber(
+       phoneNumber: "+91" + phoneController.text,
+       verificationCompleted: (PhoneAuthCredential credential) async {
+         await auth.signInWithCredential(credential).then((value) {
+           print("You are logged in successfully");
+         });
+       },
+       verificationFailed: (FirebaseAuthException e) {
+         print(e.message);
+       },
+       codeSent: (String verificationId, int? resendToken) {
+         otpVisibility = true;
+         verificationID = verificationId;
+         setState(() {});
+       },
+       codeAutoRetrievalTimeout: (String verificationId) {},
+     );
+   }
+
+   void verifyOTP() async {
+     PhoneAuthCredential credential = PhoneAuthProvider.credential(
+         verificationId: verificationID, smsCode: otpController.text);
+
+     await auth.signInWithCredential(credential).then(
+           (value) {
+         print("You are logged in successfully");
+         Fluttertoast.showToast(
+           msg: "You are logged in successfully",
+           toastLength: Toast.LENGTH_SHORT,
+           gravity: ToastGravity.CENTER,
+           timeInSecForIosWeb: 1,
+           backgroundColor: Colors.red,
+           textColor: Colors.white,
+           fontSize: 16.0,
+         );
+       },
+     ).whenComplete(
+           () {
+         Navigator.pushReplacement(
+           context,
+           MaterialPageRoute(
+             builder: (context) => ChooseLoc(),
+           ),
+         );
+       },
+     );
+   }
+
+   bool otpVisibility = false;
+
+   String verificationID = "";
    @override
    Widget build(BuildContext context) {
      return Scaffold(
@@ -23,30 +83,56 @@ import 'choose_loc.dart';
            onPressed: () => Navigator.of(context).pop(),
          ),
        ),
-       body: CustomScrollView(
-         slivers: [
-           SliverFillRemaining(
-             hasScrollBody: false,
-           child:   Column(
-               crossAxisAlignment: CrossAxisAlignment.center,
-               children: [
-                 Padding(padding: EdgeInsets.fromLTRB(10, 40, 10, 40),
-                   child: Text("OTP VERIFICATION", style: GoogleFonts.poppins(
-                       fontSize: 24,
-                       color: colors.primarytextcolor
-                   ),),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(10.0),
+       body:  Container(
+         margin: EdgeInsets.all(10),
+         child: Center(
+           child: Column(
+             mainAxisAlignment: MainAxisAlignment.center,
+             crossAxisAlignment: CrossAxisAlignment.center,
+             children: [
+               Padding(
+                 padding: const EdgeInsets.all(8.0),
+                 child: SizedBox(  height: 70,
+                   width: MediaQuery.of(context).size.width*0.8,
                    child: TextFormField(
-                       style: GoogleFonts.montserrat(color: Colors.white),
+                     controller: phoneController,
+                       maxLength: 10,
+                       keyboardType: TextInputType.phone,
+
+                       style: GoogleFonts.montserrat(color: colors.primarytextcolor),
+                       decoration: InputDecoration(
+
+                           filled: true,
+                           fillColor: colors.textboxcolor,
+                           hintText: "Phone number",
+                           hintStyle: GoogleFonts.poppins(
+                               color: colors.hintcolor,
+                               fontSize: 18
+                           ),
+                           focusedBorder: OutlineInputBorder(
+                             borderSide: BorderSide.none,
+                             borderRadius: BorderRadius.circular(5.0),
+
+                           )
+                       )),
+                 ),
+               ),
+               Visibility(
+                 child:  SizedBox(  height: 70,
+                   width: MediaQuery.of(context).size.width*0.8,
+                   child: TextFormField(
+                       controller: otpController,
+                       maxLength: 10,
+                       keyboardType: TextInputType.phone,
+
+                       style: GoogleFonts.montserrat(color: colors.primarytextcolor),
                        decoration: InputDecoration(
 
                            filled: true,
                            fillColor: colors.textboxcolor,
                            hintText: "OTP",
                            hintStyle: GoogleFonts.poppins(
-                               color:  colors.hintcolor,
+                               color: colors.hintcolor,
                                fontSize: 18
                            ),
                            focusedBorder: OutlineInputBorder(
@@ -57,55 +143,35 @@ import 'choose_loc.dart';
                        )),
                  ),
 
-                 Padding(padding: EdgeInsets.fromLTRB(20, 20, 10, 40),
-                   child: TextButton(onPressed: (){},
-                     child: Text("Didn't get OTP? Resend", style: GoogleFonts.poppins(
-                         fontSize: 18,
-                         color: colors.primarytextcolor
-
-                     ),),),
-                 ),
-                 Spacer(flex: 2,),
-                 Padding(
-                   padding: EdgeInsets.fromLTRB(30, 30, 30, 50),
-                   child: SizedBox(
-                     height: 54,
-                     width: 314,
-                     child: ElevatedButton.icon(
-                       icon: Icon(
-                           Icons.domain_verification_sharp,
-                           size: 24,
-                           color: colors.buttontextcolor
-                       ),
-                       label: Text(
-                         "VERIFY",
-                         style: GoogleFonts.montserrat(
-                             color: colors.buttontextcolor, fontSize: 18),
-                       ),
-                       onPressed: () {
-
-                         Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => ChooseLoc()),
-                         );
-
-                       },
-                       style: ElevatedButton.styleFrom(
-                           elevation: 10,
-
-                           padding: EdgeInsets.all(10.0),
-                           primary: colors.buttoncolor,
-                           shape: new RoundedRectangleBorder(
-                               borderRadius: BorderRadius.circular(20.0))),
-                     ),
+                 visible: otpVisibility,
+               ),
+               SizedBox(
+                 height: 10,
+               ),
+               MaterialButton(
+                 color: colors.buttoncolor,
+                 onPressed: () {
+                   if (otpVisibility) {
+                     verifyOTP();
+                   } else {
+                     loginWithPhone();
+                   }
+                 },
+                 child: Text(
+                   otpVisibility ? "Verify" : "Send OTP",
+                   style: TextStyle(
+                     color: Colors.white,
+                     fontSize: 20,
                    ),
                  ),
-
-               ],
-             ),
-           )
-         ],
-       )
+               ),
+             ],
+           ),
+         ),
+       ),
      );
    }
  }
+
+
+
