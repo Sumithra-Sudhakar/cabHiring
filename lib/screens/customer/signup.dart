@@ -6,8 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 import 'package:cabhiring/global/global.dart';
 
-import 'login.dart';
-import 'otp.dart';
+import '../login.dart';
+import '../otp.dart';
+
+
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -137,8 +139,8 @@ class _SignUpState extends State<SignUp> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Name",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Name",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),
@@ -163,8 +165,8 @@ class _SignUpState extends State<SignUp> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Email",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Email",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),
@@ -190,8 +192,8 @@ class _SignUpState extends State<SignUp> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Password",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Password",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),
@@ -214,8 +216,8 @@ class _SignUpState extends State<SignUp> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Confirm Password",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Confirm Password",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),

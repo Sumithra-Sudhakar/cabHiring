@@ -1,6 +1,4 @@
-import 'package:cabhiring/screens/cab_details.dart';
-import 'package:cabhiring/screens/choose_loc.dart';
-import 'package:cabhiring/screens/signup.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
@@ -8,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:cabhiring/global/global.dart';
+import 'customer/choose_loc.dart';
+import 'customer/signup.dart';
 import 'otp.dart';
 
 class Login extends StatefulWidget {
@@ -120,8 +120,8 @@ class _LoginState extends State<Login> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Email",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Email",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),
@@ -147,8 +147,8 @@ class _LoginState extends State<Login> {
 
                             filled: true,
                             fillColor: colors.textboxcolor,
-                            hintText: "Password",
-                            hintStyle: GoogleFonts.poppins(
+                            labelText: "Password",
+                            labelStyle: GoogleFonts.poppins(
                                 color: colors.hintcolor,
                                 fontSize: 18
                             ),

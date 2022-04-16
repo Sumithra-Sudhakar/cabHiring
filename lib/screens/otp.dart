@@ -4,7 +4,9 @@ import 'package:cabhiring/utils/colors.dart' as colors;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:cabhiring/screens/choose_loc.dart';
+
+import 'customer/choose_loc.dart';
+
 
  class OTP extends StatefulWidget {
    const OTP({Key? key}) : super(key: key);
@@ -104,8 +106,8 @@ import 'package:cabhiring/screens/choose_loc.dart';
 
                            filled: true,
                            fillColor: colors.textboxcolor,
-                           hintText: "Phone number",
-                           hintStyle: GoogleFonts.poppins(
+                           labelText: "Phone number",
+                           labelStyle: GoogleFonts.poppins(
                                color: colors.hintcolor,
                                fontSize: 18
                            ),
@@ -130,8 +132,8 @@ import 'package:cabhiring/screens/choose_loc.dart';
 
                            filled: true,
                            fillColor: colors.textboxcolor,
-                           hintText: "OTP",
-                           hintStyle: GoogleFonts.poppins(
+                           labelText: "OTP",
+                           labelStyle: GoogleFonts.poppins(
                                color: colors.hintcolor,
                                fontSize: 18
                            ),

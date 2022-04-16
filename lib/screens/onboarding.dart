@@ -1,9 +1,12 @@
 
-import 'package:cabhiring/screens/signup.dart';
+
+import 'package:cabhiring/screens/login_as.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 import 'package:introduction_screen/introduction_screen.dart';
+
+import 'customer/signup.dart';
 class OnBoarding extends StatelessWidget {
   const OnBoarding({Key? key}) : super(key: key);
 
@@ -53,7 +56,7 @@ class OnBoarding extends StatelessWidget {
 
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignUp()));
+                    MaterialPageRoute(builder: (context) => SignUpAs()));
               },
               style: ElevatedButton.styleFrom(
                   elevation: 10,
