@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
 import 'package:introduction_screen/introduction_screen.dart';
 
+import '../../utils/alert.dart';
+
 class TripDetails extends StatefulWidget {
   const TripDetails({Key? key}) : super(key: key);
 
@@ -125,11 +127,12 @@ children: [
                 ),
                 onPressed: () {
 
-
-                  Navigator.push(
+                  displayDialog(context, "YES","NO" , (){Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => CabDetails()),
                   );
+                  }, "Confirm", "Confirm Booking");
+
 
 
                 },

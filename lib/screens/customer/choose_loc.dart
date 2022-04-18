@@ -57,7 +57,9 @@ class _ChooseLocState extends State<ChooseLoc> {
                 backgroundColor: colors.searchbarcolor,
                 elevation: 2,
                 actions: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.search))
+                  IconButton(onPressed: () {
+                    showSearch(context: context, delegate: MySearchDelegate());
+                  }, icon: Icon(Icons.search))
                 ],
               ),
             ),
@@ -98,85 +100,10 @@ class _ChooseLocState extends State<ChooseLoc> {
           backgroundColor: colors.searchbarcolor,
           elevation: 2,
           actions: [IconButton(onPressed: () {
-
+showSearch(context: context, delegate: MySearchDelegate());
           }, icon: Icon(Icons.search))],
         ),
         drawer:  Drawer(
-//     child: Center(
-//     child: Column(
-//     children: <Widget>[
-//       UserAccountsDrawerHeader(
-//         accountEmail: Text(''), // keep blank text because email is required
-//         accountName: Row(
-//
-//           children: <Widget>[
-//             Container(
-//
-//               width: 50,
-//               height: 50,
-//               decoration: BoxDecoration(shape: BoxShape.circle),
-//               child: CircleAvatar(
-//                 radius: 100.0,
-//                child: Image.asset('assets/homeimage.png'),
-//               ),
-//             ),
-//             Spacer(),
-//             Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: <Widget>[
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Text('KS Ravindran ', style: GoogleFonts.poppins(
-//                     fontWeight: FontWeight.w500,
-//                     fontSize: 18
-//
-//                   ),),
-//                 ),
-// ]),
-//             Spacer()
-//           ],
-//         ),
-//       ),
-//       Spacer(),
-//       Padding(
-//         padding: EdgeInsets.fromLTRB(30, 30, 30, 50),
-//         child: SizedBox(
-//           height: 54,
-//           width: 214,
-//           child: ElevatedButton.icon(
-//             icon: Icon(
-//               Icons.logout,
-//               size: 24,
-//               color: colors.buttontextcolor,
-//             ),
-//             label: Text(
-//               "LOG OUT",
-//               style: GoogleFonts.montserrat(
-//                   color: colors.buttontextcolor, fontSize: 16),
-//             ),
-//             onPressed: () {
-//
-//
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(builder: (context) => Login()),
-//               );
-//
-//
-//             },
-//             style: ElevatedButton.styleFrom(
-//                 elevation: 10,
-//
-//                 padding: EdgeInsets.all(10.0),
-//                 primary: colors.buttoncolor,
-//                 shape: new RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(20.0))),
-//           ),
-//         ),
-//       ),
-//     ],
-//     ),
-//     ),
 
         child: SingleChildScrollView(
           child: Column(
@@ -247,5 +174,50 @@ class _ChooseLocState extends State<ChooseLoc> {
       ),
     );
 
+  }
+
+
+}
+
+class MySearchDelegate  extends SearchDelegate{
+  @override
+  Widget? buildLeading (BuildContext context) => IconButton(
+    icon: Icon(Icons.arrow_back_ios_outlined),
+    onPressed: ()=> close(context, null),
+  );
+
+  @override
+  List<Widget>? buildActions(BuildContext context) => [
+    IconButton(
+      icon: const Icon(Icons.clear),
+      onPressed: (){
+        if(query.isEmpty){close(context, null);}
+        query='';
+      },
+    )
+  ];
+
+  @override
+  Widget buildResults(BuildContext context ) => Container();
+
+  @override
+  Widget buildSuggestions(BuildContext context){
+    List <String> suggestions =[
+      'Racecourse , Coimbatore',
+      'Crosscut Road, Coimbatore',
+      'Coimbatore International Airport',
+      'Marudhamalai, Coimbatore',
+      'Marudhamalai, Coimbatore',
+
+    ];
+    return ListView.builder(itemBuilder: (context, index){
+      final suggestion = suggestions[index];
+      return ListTile(
+        title: Text(suggestion),
+        onTap: (){
+          query = suggestion;
+        },
+      );
+    });
   }
 }

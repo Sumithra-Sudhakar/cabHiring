@@ -23,7 +23,7 @@ class _PaymentState extends State<Payment> {
       title: Text(
         'Rate this trip',
         textAlign: TextAlign.center,
-        style: const TextStyle(
+        style: GoogleFonts.poppins(
           fontSize: 25,
           fontWeight: FontWeight.bold,
         ),
