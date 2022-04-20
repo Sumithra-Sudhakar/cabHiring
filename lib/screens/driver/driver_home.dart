@@ -1,9 +1,13 @@
+import 'dart:ffi';
+
 import 'package:cabhiring/screens/customer/customer_settings.dart';
 import 'package:cabhiring/screens/login.dart';
+import 'package:cabhiring/utils/alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:cabhiring/utils/colors.dart' as colors;
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'driver_setting.dart';
@@ -26,10 +30,47 @@ class _DriverHomeState extends State<DriverHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: [
-           
-          ],
+        body:  SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text("Have a nice day!",
+                    style: GoogleFonts.poppins(
+                        fontSize: 28,
+                        color: colors.primarytextcolor,
+                        fontWeight: FontWeight.bold
+                    ),),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(child: Padding(
+                  
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(child: Text("Your current Location....", style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: colors.secondarytextcolor
+                  ),),),
+                ),
+                color: colors.hintcolor.withOpacity(0.5),
+                ),
+              ),
+              buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),   buildCard("Coimbatore", "Chennai"),   buildCard("Coimbatore", "Chennai"),   buildCard("Coimbatore", "Chennai"),
+              buildCard("Coimbatore", "Chennai"),
+
+
+
+
+            ],
+          ),
         ),
       appBar: AppBar(),
         drawer:  Drawer(
@@ -108,4 +149,46 @@ class _DriverHomeState extends State<DriverHome> {
     );
 
   }
+  Widget buildCard(String pickuplocation, String droplocation, ) => Card(
+    color: colors.searchbarcolor.withOpacity(0.7),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Pickup Location: $pickuplocation", style: GoogleFonts.poppins(fontSize: 14,
+                color: colors.secondarytextcolor,
+                fontWeight: FontWeight.w500
+            ),),
+
+
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Drop Location: $droplocation", style:  GoogleFonts.poppins(fontSize: 14,
+                color: colors.secondarytextcolor,
+                fontWeight: FontWeight.w500
+            ),),
+          ),
+
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: IconButton(onPressed: (){displayDialog(context, "Yes", "No", (){
+                Navigator.pop(context);
+              }, "Take the ride!", "Are you sure you would like to take the trip");}, icon: Icon(Icons.navigate_next, color: colors.secondarytextcolor,size: 36,)),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
 }
+

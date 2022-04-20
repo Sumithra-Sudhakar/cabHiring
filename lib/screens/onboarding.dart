@@ -14,12 +14,7 @@ class OnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(child: IntroductionScreen(
       pages: [
-        PageViewModel(
-          title: 'CAB HIRING',
-          body: 'Hire a car on hourly or daily payment',
-          image: buildImage('assets/undraw_City_driver_re_9xyv.png'),
-          decoration: getPageDecoration()
-        ),
+
         PageViewModel(
             title: 'CAB BOOKING',
             body: 'Choose your pick up and drop location, book a cab and enjoy your trip',
